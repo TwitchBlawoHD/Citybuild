@@ -61,27 +61,27 @@ class Citybuild extends PluginBase implements Listener
 
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool
     {
-        $config = new Config($this->getDataFolder() . "players/" . strtolower($player->getName()) . ".yml", Config::YAML);
-        if ($sender instanceof Player) {
-            if ($cmd->getName() === "fly") {
-                if ($sender->hasPermission("fly.use")) {
-                    if ($config->get("Fly") === "off") {
-                        $sender->sendMessage($this->prefix . TF::GREEN . "Dein Flugmodus wurde " . TF::GOLD . "Aktiviert!");
-                        $sender->setAllowFlight(true);
+        $config = new Config($this->getDataFolder() . "players/" . strtolower($sender->getName()) . ".yml", Config::YAML);
+        if ($cmd->getName() === "fly") {
+            if ($sender->hasPermission("fly.use")) {
+                if ($config->get("Fly") === "off") {
+                    $sender->sendMessage($this->prefix . TF::GREEN . "Dein Flugmodus wurde " . TF::GOLD . "Aktiviert!");
+                    $sender->setAllowFlight(true);
 
-                        $config->set("Fly", "on");
-                        $config->save();
-                    } elseif ($config->get("Fly") === "on") {
-                        $sender->sendMessage($this->prefix . TF::RED . "Dein Flugmodus wurde " . TF::GOLD . "Deaktiviert!");
-                        $sender->setAllowFlight(true);
+                    $config->set("Fly", "on");
+                    $config->save();
+                } elseif ($config->get("Fly") === "on") {
+                    $sender->sendMessage($this->prefix . TF::RED . "Dein Flugmodus wurde " . TF::GOLD . "Deaktiviert!");
+                    $sender->setAllowFlight(true);
 
-                        $config->set("Fly", "off");
-                        $config->save();
-                    }
+                    $config->set("Fly", "off");
+                    $config->save();
                 }
             }
 
             if ($cmd->getName() === "heal") {
+                $sender->setHealth(20);
+                $sender->sendMessage($this->prefix . TF::RED . "Du hast nun wieder " . TF::GOLD . "volle Herzen!");
 
             }
 
