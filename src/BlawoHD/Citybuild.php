@@ -65,13 +65,13 @@ class Citybuild extends PluginBase implements Listener
         if ($cmd->getName() === "fly") {
             if ($sender->hasPermission("fly.use")) {
                 if ($config->get("Fly") === "off") {
-                    $sender->sendMessage($this->prefix . TF::GREEN . "Dein Flugmodus wurde " . TF::GOLD . "Aktiviert!");
+                    $sender->sendMessage($this->prefix . TF::GREEN . "Dein Flugmodus wurde " . TF::GOLD . "Aktiviert");
                     $sender->setAllowFlight(true);
 
                     $config->set("Fly", "on");
                     $config->save();
                 } elseif ($config->get("Fly") === "on") {
-                    $sender->sendMessage($this->prefix . TF::RED . "Dein Flugmodus wurde " . TF::GOLD . "Deaktiviert!");
+                    $sender->sendMessage($this->prefix . TF::RED . "Dein Flugmodus wurde " . TF::GOLD . "Deaktiviert");
                     $sender->setAllowFlight(true);
 
                     $config->set("Fly", "off");
@@ -80,14 +80,16 @@ class Citybuild extends PluginBase implements Listener
             }
 
             if ($cmd->getName() === "heal") {
-                $sender->setHealth(20);
-                $sender->sendMessage($this->prefix . TF::RED . "Du hast nun wieder " . TF::GOLD . "volle Herzen!");
-
+                if ($sender->hasPermission("heal.use")) {
+                    $sender->setHealth(20);
+                    $sender->sendMessage($this->prefix . TF::RED . "Du hast nun wieder " . TF::GOLD . "volle Herzen");
+                }
             }
 
             if ($cmd->getName() === "repair") {
 
             }
         }
+        return false;
     }
 }
