@@ -61,18 +61,20 @@ class Citybuild extends PluginBase implements Listener
 
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool
     {
+        $player = $this->getServer()->getPlayer();
         $config = new Config($this->getDataFolder() . "players/" . strtolower($sender->getName()) . ".yml", Config::YAML);
+
         if ($cmd->getName() === "fly") {
             if ($sender->hasPermission("fly.use")) {
                 if ($config->get("Fly") === "off") {
                     $sender->sendMessage($this->prefix . TF::GREEN . "Dein Flugmodus wurde " . TF::GOLD . "Aktiviert");
-                    $sender->setAllowFlight(true);
+                    $player->setAllowFlight(true);
 
                     $config->set("Fly", "on");
                     $config->save();
                 } elseif ($config->get("Fly") === "on") {
                     $sender->sendMessage($this->prefix . TF::RED . "Dein Flugmodus wurde " . TF::GOLD . "Deaktiviert");
-                    $sender->setAllowFlight(true);
+                    $player->setAllowFlight(true);
 
                     $config->set("Fly", "off");
                     $config->save();
@@ -81,7 +83,7 @@ class Citybuild extends PluginBase implements Listener
 
             if ($cmd->getName() === "heal") {
                 if ($sender->hasPermission("heal.use")) {
-                    $sender->setHealth(20);
+                    $player->setHealth(20);
                     $sender->sendMessage($this->prefix . TF::RED . "Du hast nun wieder " . TF::GOLD . "volle Herzen");
                 }
             }
