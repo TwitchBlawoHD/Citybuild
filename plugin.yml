@@ -1,0 +1,11 @@
+name: Citybuild
+main: BlawoHD\Citybuild
+api: 3.0.0
+version: 0.1.0-BETA1
+commands:
+  fly:
+    permission: "fly.use"
+    aliases: ["fliegen"]
+permissions:
+  fly.use:
+    default: false
