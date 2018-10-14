@@ -1,7 +1,7 @@
 name: Citybuild
 main: BlawoHD\Citybuild
 api: 3.0.0
-version: 0.1.2-BETA4
+version: 0.1.3-BETA1
 commands:
   fly:
     aliases: ["fliegen"]
@@ -9,8 +9,18 @@ commands:
   heal:
     aliases: ["heilen"]
     permission: "heal.use"
+  repair:
+    aliases: ["reparieren"]
+    permission: "repair.use"
+  coins:
+    aliases: ["geld", "money"]
+    permission: "coins.use"
 permissions:
   fly.use:
     default: op
   heal.use:
+    default: op
+  repair.use:
+    default: op
+  coins.use:
     default: op
