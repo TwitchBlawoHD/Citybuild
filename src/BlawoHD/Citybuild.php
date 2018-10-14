@@ -79,21 +79,22 @@ class Citybuild extends PluginBase implements Listener
                     $config->save();
                 }
             }
+        }
 
-            if ($cmd->getName() === "heal") {
-                if ($sender->hasPermission("heal.use")) {
-                    $sender->setHealth(20);
-                    $sender->sendMessage($this->prefix . TF::RED . "Du hast nun wieder " . TF::GOLD . "volle Herzen");
-                }
+        if ($cmd->getName() === "heal") {
+            if ($sender->hasPermission("heal.use")) {
+                $sender->setHealth(20);
+                $sender->sendMessage($this->prefix . TF::RED . "Du hast nun wieder " . TF::GOLD . "volle Herzen");
             }
+        }
 
-            if ($cmd->getName() === "repair") {
-                //soon
-            }
+        if ($cmd->getName() === "repair") {
+            //soon
+        }
 
-            if ($cmd->getName() === "coins") {
-                //soon
-            }
+        if ($cmd->getName() === "coins") {
+            //soon
+
         }
         return false;
     }
