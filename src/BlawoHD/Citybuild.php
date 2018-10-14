@@ -25,11 +25,17 @@ class Citybuild extends PluginBase implements Listener
         @mkdir($this->getDataFolder() . "players/");
     }
 
+    public function onDisable()
+    {
+        @rmdir($this->getDataFolder());
+    }
+
     public function onJoin(PlayerJoinEvent $event)
     {
         $player = $event->getPlayer();
         $config = new Config($this->getDataFolder() . "players/" . strtolower($player->getName()) . ".yml", Config::YAML);
 
+        $config->set("Name", $player->getName());
         $config->set("Fly", "off");
         $config->save();
     }
