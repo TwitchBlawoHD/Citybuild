@@ -1,7 +1,8 @@
 name: Citybuild
 main: BlawoHD\Citybuild
 api: 3.0.0
-version: 0.2.0
+version: 0.2.1
+author: BlawoHD
 commands:
   fly:
     aliases: ["fliegen"]
