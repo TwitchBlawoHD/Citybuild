@@ -96,7 +96,26 @@ class Citybuild extends PluginBase implements Listener
 
         if ($cmd->getName() === "repair") {
             if ($sender->hasPermission("repair.use")) {
-                // soon
+                if ($sender instanceof Player) {
+                    $sender->getInventory()->getItemInHand()->setDamage(0);
+                    $sender->sendMessage($this->prefix . TF::GREEN . "Das Item wurde erfolgreich repariert");
+                }
+            }
+        }
+
+        if ($cmd->getName() === "repairall") {
+            if ($sender->hasPermission("repairall.use")) {
+                if ($sender instanceof Player) {
+                    foreach ($sender->getInventory()->getContents() as $item) {
+                        $item->setDamage(0);
+                        return true;
+                    }
+                    foreach ($sender->getArmorInventory()->getContents() as $item) {
+                        $item->setDamage(0);
+                        return true;
+                    }
+                    $sender->sendMessage($this->prefix . TF::GREEN . "Alle Items wurden erfolgreich repariert");
+                }
             }
         }
 
