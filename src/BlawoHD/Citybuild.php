@@ -98,7 +98,7 @@ class Citybuild extends PluginBase implements Listener
             if ($sender->hasPermission("repair.use")) {
                 if ($sender instanceof Player) {
                     $sender->getInventory()->getItemInHand()->setDamage(0);
-                    $sender->sendMessage($this->prefix . TF::GREEN . "Das Item wurde erfolgreich repariert");
+                    //$sender->sendMessage($this->prefix . TF::GREEN . "Das Item wurde erfolgreich repariert");
                 }
             }
         }
@@ -114,7 +114,7 @@ class Citybuild extends PluginBase implements Listener
                         $item->setDamage(0);
                         return true;
                     }
-                    $sender->sendMessage($this->prefix . TF::GREEN . "Alle Items wurden erfolgreich repariert");
+                    //$sender->sendMessage($this->prefix . TF::GREEN . "Alle Items wurden erfolgreich repariert");
                 }
             }
         }
